@@ -17,9 +17,10 @@ public class FlattenArrayNode<T> extends Node<T> {
       List<T> elements = runtime.toList(input);
       List<T> flattened = new LinkedList<>();
       for (T element : elements) {
-        if (runtime.typeOf(element) == JmesPathType.ARRAY) {
+        final JmesPathType elementType = runtime.typeOf(element);
+        if (elementType == JmesPathType.ARRAY) {
           flattened.addAll(runtime.toList(element));
-        } else {
+        } else if (elementType != JmesPathType.NULL) {
           flattened.add(element);
         }
       }

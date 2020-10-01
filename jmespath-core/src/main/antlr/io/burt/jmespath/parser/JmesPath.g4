@@ -1,4 +1,7 @@
 grammar JmesPath;
+@header {
+package io.burt.jmespath.parser;
+}
 
 jmesPathExpression : expression EOF ;
 
